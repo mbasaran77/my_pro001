@@ -9,7 +9,7 @@ import time
 
 
 oku_str_1="%01#RDD0020000202"
-oku_str_2="%01#RDD0362103640"
+oku_str_2="%01#RDD0000100020"
 
 
 def bcc_calc(d_str):
@@ -21,7 +21,7 @@ def bcc_calc(d_str):
 
     print("e:",e," ", hex(e))
 
-    return (d_str+hex(e)[2:]+chr(13)).encode()
+    return (d_str+(hex(e)[2:]).upper()+chr(13)).encode()
 a=bcc_calc(oku_str_2)
 print(a)
 
@@ -42,5 +42,7 @@ time.sleep(0.2)
 line = ser.readline()
 print("alınan :",line)
 ser.close()
-
-
+x=0
+for i in line:
+    print(x," :",i)
+    x+=1
