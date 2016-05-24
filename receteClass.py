@@ -69,7 +69,7 @@ class dosyakayit(object):
             return oku_dict
 
 
-mydict = {0: ['renk1', 0, 65500], 1: ['renk2', 50, 80], 2: ['renk3', 80, 120], 3: ['renk4', 120, 180],
+mydict = {0: ['renk1', 0, 500], 1: ['renk2', 50, 80], 2: ['renk3', 80, 120], 3: ['renk4', 120, 180],
           4: ['renk5', 180, 220], 5: ['renk6', 220, 350],
           6: ['renk1', 500, 900], 7: ['renk2', 90, 110], 8: ['renk3', 134, 560], 9: ['renk4', 455, 567],
           10: ['renk5', 230, 420], 11: ['renk6', 304, 405], 11: ['renk1', 1000, 1200]}
@@ -129,7 +129,7 @@ class plc_recete(object):
     def get_arr(self):
         return self.renk1
 
-
+renk1=['0','500','500','900','1000','1200']
 class plc_data_w_hazirla(object):
     def __init__(self,arr, str_adres):
         self._arr=arr
