@@ -1,5 +1,6 @@
 
 
+from draft_3 import w_plc_data_hazirla
 
 import serial
 import time
@@ -12,6 +13,11 @@ oku_str_1="%01#RDD0020000202"
 oku_str_2="%01#RDD0000100020"
 
 
+renk1=['0','500','500','900','1000','1200']
+w_p_data = w_plc_data_hazirla(renk1, "D00001")
+okunacak=w_p_data.hazirla(True)
+print("mdl :",okunacak)
+
 def bcc_calc(d_str):
     e = 0
     _d_str=d_str.encode()
@@ -23,22 +29,22 @@ def bcc_calc(d_str):
 
     return (d_str+(hex(e)[2:]).upper()+chr(13)).encode()
 a=bcc_calc(oku_str_2)
+a=okunacak
 print(a)
 
 
 ser = serial.Serial(
     port='COM4',
-    baudrate=9600,
+    baudrate=115200,
     parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
-    timeout=1
-)
+    timeout=1)
 print("seri port açık mı?",ser.isOpen())
 ser.write(a)
 print("gönderilen :",a)
 
-time.sleep(0.2)
+time.sleep(0.05)
 line = ser.readline()
 print("alınan :",line)
 ser.close()

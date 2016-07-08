@@ -2,6 +2,7 @@
 
 renk1=['0','500','500','900','1000','1200']
 renk2=[1280,1813,9]
+
 class w_plc_data_hazirla(object):
     def __init__(self,arr, str_adres):
         self._arr=arr
@@ -37,7 +38,7 @@ class w_plc_data_hazirla(object):
                 b=b.zfill(4)
                 c_1=b[2:]
                 c_2=b[:2]
-                a=a+(c_2+c_1)
+                a=a+(c_1+c_2)
             return a
 
     def hazirla(self,recipe=False):
@@ -67,7 +68,9 @@ class r_plc_data_hazirla(w_plc_data_hazirla):
         self._wdata="%01#RD"
 
 
-r_p_data=r_plc_data_hazirla("D01101",3)
-print(r_p_data.hazirla(False))
-# w_p_data=plc_data_w_hazirla(renk2,"D00001")
-# print(w_p_data.hazirla(False))
+# r_p_data=r_plc_data_hazirla("D01101",3)
+# print(r_p_data.hazirla(False))
+
+
+w_p_data=w_plc_data_hazirla(renk1,"D00001")
+print(w_p_data.hazirla(True))

@@ -6,13 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-<<<<<<< HEAD
-    <width>786</width>
-    <height>614</height>
-=======
     <width>711</width>
     <height>506</height>
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,65 +15,6 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-<<<<<<< HEAD
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QTableWidget" name="tableWidget">
-         <property name="columnCount">
-          <number>3</number>
-         </property>
-         <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>147</number>
-         </attribute>
-         <column>
-          <property name="text">
-           <string>renk</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>başlangıç</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>bitiş</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QComboBox" name="comboBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>10</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <item>
-            <property name="text">
-             <string>renk 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>renk 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>renk 3</string>
-            </property>
-=======
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -179,52 +115,10 @@
               </size>
              </property>
             </spacer>
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
            </item>
-           <item>
-            <property name="text">
-             <string>renk 4</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>renk 5</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>renk 6</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>renk 7</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>renk 8</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Minimum</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>68</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+          </layout>
+         </widget>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -234,26 +128,13 @@
             <enum>Qt::Vertical</enum>
            </property>
            <widget class="QLabel" name="label">
-<<<<<<< HEAD
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-=======
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
             <property name="text">
              <string>başlangıç</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="lineEditBas">
             <property name="sizePolicy">
-<<<<<<< HEAD
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-=======
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -283,26 +164,13 @@
             <enum>Qt::Vertical</enum>
            </property>
            <widget class="QLabel" name="label_2">
-<<<<<<< HEAD
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-=======
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
             <property name="text">
              <string>bitis</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="lineEditSon">
             <property name="sizePolicy">
-<<<<<<< HEAD
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-=======
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -319,19 +187,11 @@
         </layout>
        </item>
        <item>
-<<<<<<< HEAD
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="btnEkle">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-=======
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QPushButton" name="btnEkle">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -347,19 +207,11 @@
             <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
-<<<<<<< HEAD
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>28</width>
-=======
             <enum>QSizePolicy::Fixed</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
              <width>38</width>
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
              <height>20</height>
             </size>
            </property>
@@ -368,11 +220,7 @@
          <item>
           <widget class="QPushButton" name="btnSil">
            <property name="sizePolicy">
-<<<<<<< HEAD
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-=======
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -385,19 +233,11 @@
         </layout>
        </item>
        <item>
-<<<<<<< HEAD
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QPushButton" name="btnKayit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-=======
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QPushButton" name="btnKayit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -409,20 +249,6 @@
          </item>
          <item>
           <widget class="QLabel" name="label_3">
-<<<<<<< HEAD
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-=======
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
            <property name="text">
             <string>Dosya Adı</string>
            </property>
@@ -431,11 +257,7 @@
          <item>
           <widget class="QLineEdit" name="lineEdit_3">
            <property name="sizePolicy">
-<<<<<<< HEAD
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-=======
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -448,15 +270,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
           <widget class="QPushButton" name="btnAc">
-<<<<<<< HEAD
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-=======
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
            <property name="text">
             <string>Aç</string>
            </property>
@@ -464,20 +277,6 @@
          </item>
          <item>
           <widget class="QLabel" name="label_4">
-<<<<<<< HEAD
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-=======
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
            <property name="text">
             <string>Dosya Adı</string>
            </property>
@@ -485,20 +284,6 @@
          </item>
          <item>
           <widget class="QLabel" name="lblDosya">
-<<<<<<< HEAD
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-=======
->>>>>>> 5235b5f8d0b428c1a21c963187a1b883fd870403
            <property name="text">
             <string>TextLabel</string>
            </property>

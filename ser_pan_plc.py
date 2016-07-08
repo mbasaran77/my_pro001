@@ -6,6 +6,11 @@
 import serial
 import time
 
+
+
+
+
+
 def ser_init(a):
     seri_port=serial.Serial()
     seri_port.BAUDRATES=9600
