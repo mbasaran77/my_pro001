@@ -1,7 +1,7 @@
 
 
 from draft_3 import w_plc_data_hazirla
-
+from draft_3 import r_plc_data_hazirla
 import serial
 import time
 
@@ -15,7 +15,12 @@ oku_str_2="%01#RDD0000100020"
 
 renk1=['0','500','500','900','1000','1200']
 w_p_data = w_plc_data_hazirla(renk1, "D00001")
-okunacak=w_p_data.hazirla(True)
+yazilacak=w_p_data.hazirla(True)
+print("mdl :",yazilacak)
+
+r_p_data=r_plc_data_hazirla("D00001",20)
+okunacak=r_p_data.hazirla()
+
 print("mdl :",okunacak)
 
 def bcc_calc(d_str):
@@ -29,7 +34,8 @@ def bcc_calc(d_str):
 
     return (d_str+(hex(e)[2:]).upper()+chr(13)).encode()
 a=bcc_calc(oku_str_2)
-a=okunacak
+# a=okunacak
+a=yazilacak
 print(a)
 
 

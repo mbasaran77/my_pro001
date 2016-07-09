@@ -1,6 +1,6 @@
 
 
-renk1=['0','500','500','900','1000','1200']
+renk1=['0','500','500','900','1000','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200','1200']
 renk2=[1280,1813,9]
 
 class w_plc_data_hazirla(object):
@@ -24,7 +24,7 @@ class w_plc_data_hazirla(object):
     def end_addres(self,str_adres,dizi_len):
         a = int(self._str_adres[1:6])
         end = a +(dizi_len-1)
-        end_adres = (str(end)).zfill((6 - len(str(end))))
+        end_adres = str(end).zfill(5)
         return end_adres
 
 
@@ -66,11 +66,20 @@ class w_plc_data_hazirla(object):
 class r_plc_data_hazirla(w_plc_data_hazirla):
     def __init__(self,str_add,data_l):
         self._wdata="%01#RD"
+        self._str_adres=str_add
+        self._data_l=data_l
+    def hazirla(self,recipe=False):
+        self._wdata=self._wdata+self._str_adres+self.end_addres(self._str_adres,self._data_l)
+        return (self._wdata+self.bcc_calc(self._wdata)+chr(13)).encode()
 
 
-# r_p_data=r_plc_data_hazirla("D01101",3)
-# print(r_p_data.hazirla(False))
 
 
-w_p_data=w_plc_data_hazirla(renk1,"D00001")
-print(w_p_data.hazirla(True))
+
+
+# r_p_data=r_plc_data_hazirla("D00001",20)
+# print("okuma",r_p_data.hazirla(False))
+#
+#
+# w_p_data=w_plc_data_hazirla(renk1,"D00001")
+# print(w_p_data.hazirla(True))
