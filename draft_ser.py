@@ -1,7 +1,8 @@
 
 
 from draft_3 import w_plc_data_hazirla
-from draft_3 import r_plc_data_hazirla
+from draft_3 import r_plc_data_hazirla, read_data_from_byte
+
 import serial
 import time
 
@@ -34,14 +35,14 @@ def bcc_calc(d_str):
 
     return (d_str+(hex(e)[2:]).upper()+chr(13)).encode()
 a=bcc_calc(oku_str_2)
-# a=okunacak
-a=yazilacak
+a=okunacak
+#a=yazilacak
 print(a)
 
 
 ser = serial.Serial(
-    port='COM4',
-    baudrate=115200,
+    port='COM2',
+    baudrate=9600,
     parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
@@ -55,6 +56,10 @@ line = ser.readline()
 print("alınan :",line)
 ser.close()
 x=0
+okuma_kontrol=read_data_from_byte(line)
+okuma_kontrol.check_r_w()
+print("deneme:",line[3]+line[4] )
 for i in line:
     print(x," :",i)
+
     x+=1
