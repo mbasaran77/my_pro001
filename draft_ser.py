@@ -19,24 +19,24 @@ w_p_data = w_plc_data_hazirla(renk1, "D00001")
 yazilacak=w_p_data.hazirla(True)
 print("mdl :",yazilacak)
 
-r_p_data=r_plc_data_hazirla("D00001",20)
-okunacak=r_p_data.hazirla()
-
-print("mdl :",okunacak)
-
-def bcc_calc(d_str):
-    e = 0
-    _d_str=d_str.encode()
-    for i in _d_str:
-        d=i
-        e=d^e
-
-    print("e:",e," ", hex(e))
-
-    return (d_str+(hex(e)[2:]).upper()+chr(13)).encode()
-a=bcc_calc(oku_str_2)
-a=okunacak
-#a=yazilacak
+# r_p_data=r_plc_data_hazirla("D00001",20)
+# okunacak=r_p_data.hazirla()
+#
+# print("mdl :",okunacak)
+#
+# def bcc_calc(d_str):
+#     e = 0
+#     _d_str=d_str.encode()
+#     for i in _d_str:
+#         d=i
+#         e=d^e
+#
+#     print("e:",e," ", hex(e))
+#
+#     return (d_str+(hex(e)[2:]).upper()+chr(13)).encode()
+# a=bcc_calc(oku_str_2)
+# a=okunacak
+a=yazilacak
 print(a)
 
 
@@ -60,6 +60,10 @@ okuma_kontrol=read_data_from_byte(line)
 okuma_kontrol.check_r_w()
 print("deneme:",line[3]+line[4] )
 for i in line:
-    print(x," :",i)
-
+    print(x," :",i," ",bin(i)[2:].zfill(8)," ",hex(i),"ascii",chr(i))
+    # s="0123456789ABCDEF"
+    # dict_hex={"0":0,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,
+    #           "9": 9,"A":10,"B":11,"c":12,"D":13,"E":14,"F":15}
+    # if chr(i) in s:
+    #     print("chr_to_int :",x," ",dict_hex[chr(i)])
     x+=1

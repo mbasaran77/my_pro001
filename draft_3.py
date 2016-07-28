@@ -74,6 +74,9 @@ class r_plc_data_hazirla(w_plc_data_hazirla):
 
 
 class read_data_from_byte:
+    dict_hex = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8,
+                "9": 9, "A": 10, "B": 11, "c": 12, "D": 13, "E": 14, "F": 15}
+    s = "0123456789ABCDEF"
     def __init__(self,arr):
         self.arr=arr
 
@@ -81,21 +84,25 @@ class read_data_from_byte:
         if self.arr[3]==36 and self.arr[4]==82:
             print("okuma başarılı")
             self.convertRead()
+        if self.arr[3]==36 and self.arr[4]==87:
+            print("yazma başarılı")
+
 
     def convertRead(self):
         a=len(self.arr)-3
-        c=0
-        for i in range(6,a,2):
-            b_0=bin(self.arr[i])[2:].zfill(8)
-            b_1=bin(self.arr[i+1])[2:].zfill(8)
-            print(b_0," ",b_1)
-            deger=0
-            for c in b_1:
-                deger+=pow(2,int(c))
-            for c in b_0:
-                deger += pow(2, (int(c)+7))
-            print(deger)
-
+        x=1
+        deger=[]
+        for i in range(6,a,4):
+            c=chr(self.arr[i])
+            if chr(self.arr[i]) in self.s:
+                b_1 = self.dict_hex[chr(self.arr[i])]
+                b_0 = self.dict_hex[chr(self.arr[i+1])]
+                b_3 = self.dict_hex[chr(self.arr[i+2])]
+                b_2 = self.dict_hex[chr(self.arr[i+3])]
+                deger.append(b_0*pow(16,0)+b_1*pow(16,1)+b_2*pow(16,2)+b_3*pow(16,3))
+                x+=1
+        print("deger :", x, " ", deger)
+        return deger
 # r_p_data=r_plc_data_hazirla("D00001",20)
 # print("okuma",r_p_data.hazirla(False))
 #
