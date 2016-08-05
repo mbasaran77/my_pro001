@@ -1,3 +1,5 @@
+
+
 from threading import Timer
 
 import time
@@ -34,11 +36,15 @@ class repetedTimer():
 
 def hello(name):
     print("Hello %s"%name)
+    time.sleep(1)
+    print("güle güle")
 
 print("starting..............")
 
-rt=repetedTimer(1,hello,"ramazan")
-# try:
-#     time.sleep(100)
-# finally:
-#     rt.stop()
+rt=repetedTimer(3,hello,"ramazan")
+try:
+    time.sleep(12)
+finally:
+    rt.stop()
+
+print("bitti....")
