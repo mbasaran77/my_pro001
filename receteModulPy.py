@@ -5,14 +5,17 @@ from PyQt5.QtGui import *
 import sys
 import receteClass
 import vpRecete
+__appname__="Reçete Edit"
 
 class recete_edit(QDialog,vpRecete.Ui_Dialog):
 
     def __init__(self):
         super(recete_edit, self).__init__()
         self.setupUi(self)
-        self.lineEditBas.setValidator(QIntValidator(0,65564))
+        self.lineEditBas.setValidator(QDoubleValidator(0.05,1000.00,2))
         self.lineEditSon.setValidator(QIntValidator(0,65564))
+        #self.lineEditBas.setInputMask("000000.00")
+        #self.lineEditSon.setInputMask("000000.00")
         self.btnEkle.clicked.connect(self.ekleItem)
         self.list1.itemClicked.connect(self.list1Index)
         self.btnSil.clicked.connect(self.silItem)
@@ -31,20 +34,30 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
         self.n_recete.yazdir()
 
     def list1Index(self):
-        self.list1_Index=self.list1.currentRow()
-        return self.list1_Index
+        list1_Index=self.list1.currentRow()
+        print("index_list", list1_Index)
+        return list1_Index
 
     def silItem(self):
-        self.n_recete.kaldir(self.list1_Index)
-        self.list1.clear()
-        for n in range(len(self.n_recete.my_dict)):
-            a = str(self.n_recete.my_dict[n])
-            self.list1.addItem(a)
-        self.n_recete.yazdir()
+        index=self.list1Index()
+        print("index_list",index)
+        if index<0 or index==None:
+            QMessageBox.warning(self,__appname__,"Listede Silinecek Satrı Yok")
+        else:
+            self.n_recete.kaldir(index)
+            self.list1.clear()
+            for n in range(len(self.n_recete.my_dict)):
+                a = str(self.n_recete.my_dict[n])
+                self.list1.addItem(a)
+            self.n_recete.yazdir()
 
     def kayit(self):
         _dosya=str(self.lineEdit_3.text())
-        self._dosyakayit.kayit(self.n_recete.my_dict,_dosya)
+        print(type(_dosya))
+        if _dosya=="":
+            QMessageBox.warning(self,__appname__,"dosya adı boş bırakılamaz")
+        else:
+            self._dosyakayit.kayit(self.n_recete.my_dict,_dosya)
     #dosya okuma kısmında kalındı
 
     def oku(self):
