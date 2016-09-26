@@ -32,7 +32,9 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
             if a[0]==False:
                 QMessageBox.warning(self,__appname__,a[1])
                 return
-
+            if float(text[0])>=float(text[1]):
+                QMessageBox.warning(self, __appname__, "başlangıç bitişten büyük ya da eşit olamaz")
+                return
 
         self.n_recete.ekle(self.comboBox.currentText(),self.lineEditBas.text(),self.lineEditSon.text())
         self.tableWidget.setRowCount(len(self.n_recete.my_dict))
