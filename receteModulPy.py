@@ -1,7 +1,7 @@
 
-from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import Qt
 import sys
 import receteClass
 import vpRecete
@@ -23,6 +23,15 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
         self._dosyakayit=receteClass.dosyakayit()
         self.btnKayit.clicked.connect(self.kayit)
         self.btnAc.clicked.connect(self.oku)
+        self.btnRenk_1.clicked.connect(self.renkSec)
+        self.btnRenk_2.clicked.connect(self.renkSec)
+        self.btnRenk_3.clicked.connect(self.renkSec)
+        self.btnRenk_4.clicked.connect(self.renkSec)
+        self.btnRenk_5.clicked.connect(self.renkSec)
+        self.btnRenk_6.clicked.connect(self.renkSec)
+        self.btnRenk_7.clicked.connect(self.renkSec)
+        self.btnRenk_8.clicked.connect(self.renkSec)
+        self.prgBarRec.hide()
 
     def ekleItem(self):
         text=(self.lineEditBas.text(),self.lineEditSon.text())
@@ -37,7 +46,6 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
                 return
 
         self.n_recete.ekle(self.comboBox.currentText(),self.lineEditBas.text(),self.lineEditSon.text())
-        self.tableWidget.setRowCount(len(self.n_recete.my_dict))
         self.list1.clear()
         for n in range(len(self.n_recete.my_dict)):
             a=str(self.n_recete.my_dict[n])
@@ -63,13 +71,19 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
             self.n_recete.yazdir()
 
     def kayit(self):
-        _dosya=str(self.lineEdit_3.text())
-        print(type(_dosya))
-        if _dosya=="":
+        # dlg = QFileDialog()
+        # dlg.setFileMode(QFileDialog.AnyFile)
+        # dlg.setNameFilter(self.tr('Text Files(*.txt)'))
+
+        _dosya=QFileDialog.getSaveFileName(self,"dosya adı")
+        filename=_dosya[0]
+        print(_dosya[0]+".txt")
+        if filename=="":
             QMessageBox.warning(self,__appname__,"dosya adı boş bırakılamaz")
         else:
-            self._dosyakayit.kayit(self.n_recete.my_dict,_dosya)
-    #dosya okuma kısmında kalındı
+            self._dosyakayit.kayit(self.n_recete.my_dict,filename)
+            self.lblDosya.setText(filename)
+        #dosya okuma kısmında kalındı
 
     def oku(self):
         dlg = QFileDialog()
@@ -90,6 +104,31 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
                 a = str(_myDict[n])
                 self.list1.addItem(a)
 
+
+    def renkSec(self):
+        btn=self.sender()
+        cDial = QColorDialog.getColor()
+        palet=QPalette()
+
+
+        if btn.text()=="renk 1":
+            print(cDial)
+            palet = QPalette()
+            role=QPalette.Button
+            palet.setColor(role,QColor(cDial))
+            palet.setBrush(role,QBrush(QColor(cDial), Qt.SolidPattern))
+            self.btnRenk_1.setPalette(palet)
+            self.btnRenk_1.setAutoFillBackground(True)
+
+        elif btn.text()=="renk 2":
+            print(cDial)
+            role=QPalette.Button
+            palet.setColor(role,QColor(cDial))
+            self.btnRenk_2.setPalette(palet)
+            self.btnRenk_2.setAutoFillBackground(True)
+
+        print(btn.text())
+
 class  checkIsFloat():
     def __init__(self,text,validator):
         self.text=text
@@ -109,10 +148,35 @@ class  checkIsFloat():
 
 
 
+
 if __name__ == '__main__':
     app=QApplication(sys.argv)
+
+    sys._excepthook = sys.excepthook
+    def my_exception_hook(exctype, value, traceback):
+        # Print the error and traceback
+        print(exctype, value, traceback)
+        # Call the normal Exception hook after
+        sys._excepthook(exctype, value, traceback)
+        sys.exit(1)
+
+
+    # Set the exception hook to our wrapping function
+    sys.excepthook = my_exception_hook
     form=recete_edit()
     form.show()
+    try:
+        sys.exit(app.exec_())
+    except:
+        print("Exiting")
 
-    sys.exit(app.exec_())
+
+
+
+# if __name__ == '__main__':
+#     app=QApplication(sys.argv)
+#     form=recete_edit()
+#     form.show()
+#
+#     sys.exit(app.exec_())
 
