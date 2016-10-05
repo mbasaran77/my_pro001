@@ -5,6 +5,7 @@ from PyQt5.QtCore import Qt
 import sys
 import receteClass
 import vpRecete
+from lineMdl import LineWidget
 __appname__="Reçete Edit"
 
 class recete_edit(QDialog,vpRecete.Ui_Dialog):
@@ -12,7 +13,7 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
     def __init__(self):
         super(recete_edit, self).__init__()
         self.setupUi(self)
-        self.validator=QDoubleValidator(0.05,1000.00,2)
+        self.validator=QDoubleValidator(0.00,1000.00,2)
         self.validator.setNotation(QDoubleValidator.StandardNotation)
         self.lineEditBas.setValidator(self.validator)
         self.lineEditSon.setValidator(self.validator)
@@ -31,7 +32,15 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
         self.btnRenk_6.clicked.connect(self.renkSec)
         self.btnRenk_7.clicked.connect(self.renkSec)
         self.btnRenk_8.clicked.connect(self.renkSec)
+
+        self.lineWidget=LineWidget()
+        frameLayout=QHBoxLayout(self.frameColor)
+        frameLayout.addWidget(self.lineWidget)
+
+
+        self.btnYeniRecete.clicked.connect(self.yeniRecete)
         self.prgBarRec.hide()
+        self.renkDict={}
 
     def ekleItem(self):
         text=(self.lineEditBas.text(),self.lineEditSon.text())
@@ -69,6 +78,14 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
                 a = str(self.n_recete.my_dict[n])
                 self.list1.addItem(a)
             self.n_recete.yazdir()
+    def yeniRecete(self):
+        self.list1.clear()
+        self.renkDict={}
+        self.boyabtn(self.renkDict)
+        self.n_recete.my_dict={}
+        self.n_recete.setDict({})
+        pass
+
 
     def kayit(self):
         # dlg = QFileDialog()
@@ -81,7 +98,7 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
         if filename=="":
             QMessageBox.warning(self,__appname__,"dosya adı boş bırakılamaz")
         else:
-            self._dosyakayit.kayit(self.n_recete.my_dict,filename)
+            self._dosyakayit.kayit((self.n_recete.my_dict,self.renkDict),filename)
             self.lblDosya.setText(filename)
         #dosya okuma kısmında kalındı
 
@@ -93,12 +110,18 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
         if dlg.exec_():
             filenames = dlg.selectedFiles()
             self.lblDosya.setText(filenames[0])
+            _myTuple=()
             _myDict={}
-            _myDict=self._dosyakayit.oku(filenames[0])
+            _myTuple=self._dosyakayit.oku(filenames[0])
+            _myDict=_myTuple[0]
+            print(_myTuple)
             self.list1.clear()
             print(filenames)
             print(_myDict)
             self.n_recete.setDict(_myDict)
+            print("renk ",_myTuple[1])
+            self.renkDict=_myTuple[1]
+            self.boyabtn(_myTuple[1])
 
             for n in range(len(_myDict)):
                 a = str(_myDict[n])
@@ -109,25 +132,77 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
         btn=self.sender()
         cDial = QColorDialog.getColor()
         palet=QPalette()
+        role = QPalette.Button
+        palet.setColor(role, QColor(cDial))
+        for btn_ in (self.btnRenk_1,self.btnRenk_2,self.btnRenk_3,self.btnRenk_4,self.btnRenk_5,self.btnRenk_6,
+                    self.btnRenk_7,self.btnRenk_8):
 
+            if btn_.text()==btn.text():
+                self.renkDict[btn.text()]=QColor.getHsv(cDial)
+                btn_.setPalette(palet)
+                btn_.setAutoFillBackground(True)
 
-        if btn.text()=="renk 1":
-            print(cDial)
-            palet = QPalette()
-            role=QPalette.Button
-            palet.setColor(role,QColor(cDial))
-            palet.setBrush(role,QBrush(QColor(cDial), Qt.SolidPattern))
-            self.btnRenk_1.setPalette(palet)
-            self.btnRenk_1.setAutoFillBackground(True)
+        print(self.renkDict)
 
-        elif btn.text()=="renk 2":
-            print(cDial)
-            role=QPalette.Button
-            palet.setColor(role,QColor(cDial))
-            self.btnRenk_2.setPalette(palet)
-            self.btnRenk_2.setAutoFillBackground(True)
+    def boyabtn(self,dicR):
 
-        print(btn.text())
+        palet=QPalette()
+        role = QPalette.Button
+
+        for btn_ in (self.btnRenk_1,self.btnRenk_2,self.btnRenk_3,self.btnRenk_4,self.btnRenk_5,self.btnRenk_6,
+                    self.btnRenk_7,self.btnRenk_8):
+            #print(dicR[btn_.text()])
+            try:
+                a0,a1,a2,a3=dicR[btn_.text()]
+                colorHsv=QColor.fromHsv(a0,a1,a2,a3)
+                palet.setColor(role, colorHsv)
+                btn_.setPalette(palet)
+                btn_.setAutoFillBackground(True)
+            except KeyError:
+                color=Qt.lightGray
+                palet.setColor(role, color)
+                btn_.setPalette(palet)
+                btn_.setAutoFillBackground(True)
+        self.desen()
+    def desen(self):
+        f_w=self.frameColor.width()
+        maxL=self.findMaxLength()
+        skala=f_w/maxL
+        self.lineWidget.setLine(self.desenListeYap(skala))
+        self.lineWidget.repaint()
+
+    def findMaxLength(self):
+        maxL=0
+        for a in self.n_recete.my_dict:
+            liste=self.n_recete.my_dict[a]
+            x=float(liste[2])
+            if x>=maxL:
+                maxL=x
+        return maxL
+
+    def desenListeYap(self, xSkala):
+        liste,altListe,gecList=[],[],[]
+        offset=-5
+        sozluk=self.n_recete.my_dict
+        coord = {'renk 1': 5, 'renk 2': 15, 'renk 3': 25, 'renk 4': 35, 'renk 5': 45, 'renk 6': 55, 'renk 7': 65,
+                 'renk 8': 75}
+        color=self.renkDict
+        for a in sozluk:
+            gecList=sozluk[a]
+            for renk in coord:
+                if renk==gecList[0]:
+                    try:
+                        altListe.append(color[renk])
+                        altListe.append(round(xSkala*float(gecList[1])))
+                        altListe.append(coord[renk])
+                        altListe.append(round(xSkala*float(gecList[2]))+offset)
+                        altListe.append(coord[renk])
+                        liste.append(altListe)
+                        altListe=[]
+                    except KeyError:
+                        pass
+        print(liste)
+        return liste
 
 class  checkIsFloat():
     def __init__(self,text,validator):

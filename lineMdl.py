@@ -1,13 +1,13 @@
 
 
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPainter, QBrush, QPen
+from PyQt5.QtGui import QPainter, QBrush, QPen,QColor
 from PyQt5.QtCore import Qt
 
 
-class MainWindow(QWidget):
+class LineWidget(QWidget):
     def __init__(self, parent=None):
-        super(MainWindow, self).__init__(parent)
+        super(LineWidget, self).__init__(parent)
         self.resize(600, 400)
         self.color=Qt.black
         self.colorDemet=(Qt.green,Qt.red)
@@ -32,7 +32,9 @@ class MainWindow(QWidget):
         print(self.i)
         for a in self.demet:
             c, self.x0,self.y0,self.x1,self.y1=a
-            painter.setPen(QPen(c, 5, Qt.SolidLine))
+            a0,a1,a2,a3=c
+            color=QColor.fromHsv(a0,a1,a2,a3)
+            painter.setPen(QPen(color, 5, Qt.SolidLine))
             painter.drawLine(self.x0,self.y0,self.x1,self.y1) #20, 40, 250, 40
             print(self.x0,self.x1)
 class Dialog(QDialog):
@@ -48,7 +50,7 @@ class Dialog(QDialog):
         super(Dialog, self).__init__()
         self.btn=QPushButton("deneme")
         self.btn_1=QPushButton("deneme_1")
-        self.wid=MainWindow()
+        self.wid=LineWidget()
         self.btn.clicked.connect(self.ciz)
         self.btn_1.clicked.connect(self.dene)
 
@@ -70,21 +72,23 @@ class Dialog(QDialog):
         layout_1.addWidget(self.frame)
 
         self.setLayout(layout_1)
+
+
     def dene(self):
         f_w=self.frame.width()-50
         maxX=self.findMaxX()
         skala=f_w/maxX
-        return self.listeYap(skala)
+        return self.desenListeYap(skala)
 
     def findMaxX(self):
-        maxX=0.0
+        maxL=0.0
         for a in sozluk:
             liste=sozluk[a]
             x=float(liste[2])
-            if x>=maxX:
-                maxX=x
-        return maxX
-    def listeYap(self,xSkala):
+            if x>=maxL:
+                maxL=x
+        return maxL
+    def desenListeYap(self, xSkala):
         liste,altListe,gecList=[],[],[]
         offset=10
         for a in sozluk:

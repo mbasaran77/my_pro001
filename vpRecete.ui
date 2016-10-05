@@ -310,12 +310,18 @@
         <property name="text">
          <string>renk 1</string>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnRenk_2">
         <property name="text">
          <string>renk 2</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -324,12 +330,18 @@
         <property name="text">
          <string>renk 3</string>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnRenk_4">
         <property name="text">
          <string>renk 4</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -342,12 +354,18 @@
         <property name="text">
          <string>renk 5</string>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnRenk_6">
         <property name="text">
          <string>renk 6</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -356,12 +374,25 @@
         <property name="text">
          <string>renk 7</string>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnRenk_8">
+        <property name="font">
+         <font>
+          <family>MS Reference Sans Serif</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>renk 8</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -379,7 +410,7 @@
     </rect>
    </property>
    <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+    <enum>QFrame::WinPanel</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
