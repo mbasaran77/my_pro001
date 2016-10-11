@@ -63,12 +63,10 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
 
     def list1Index(self):
         list1_Index=self.list1.currentRow()
-        print("index_list", list1_Index)
         return list1_Index
 
     def silItem(self):
         index=self.list1Index()
-        print("index_list",index)
         if index<0 or index==None:
             QMessageBox.warning(self,__appname__,"Listede Silinecek Satır Yok")
         else:
@@ -94,7 +92,6 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
 
         _dosya=QFileDialog.getSaveFileName(self,"dosya adı")
         filename=_dosya[0]
-        print(_dosya[0]+".txt")
         if filename=="":
             QMessageBox.warning(self,__appname__,"dosya adı boş bırakılamaz")
         else:
@@ -114,12 +111,8 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
             _myDict={}
             _myTuple=self._dosyakayit.oku(filenames[0])
             _myDict=_myTuple[0]
-            print(_myTuple)
             self.list1.clear()
-            print(filenames)
-            print(_myDict)
             self.n_recete.setDict(_myDict)
-            print("renk ",_myTuple[1])
             self.renkDict=_myTuple[1]
             self.boyabtn(_myTuple[1])
 
@@ -142,8 +135,6 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
                 btn_.setPalette(palet)
                 btn_.setAutoFillBackground(True)
 
-        print(self.renkDict)
-
     def boyabtn(self,dicR):
 
         palet=QPalette()
@@ -151,7 +142,6 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
 
         for btn_ in (self.btnRenk_1,self.btnRenk_2,self.btnRenk_3,self.btnRenk_4,self.btnRenk_5,self.btnRenk_6,
                     self.btnRenk_7,self.btnRenk_8):
-            #print(dicR[btn_.text()])
             try:
                 a0,a1,a2,a3=dicR[btn_.text()]
                 colorHsv=QColor.fromHsv(a0,a1,a2,a3)
@@ -201,7 +191,6 @@ class recete_edit(QDialog,vpRecete.Ui_Dialog):
                         altListe=[]
                     except KeyError:
                         pass
-        print(liste)
         return liste
 
 class  checkIsFloat():

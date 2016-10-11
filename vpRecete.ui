@@ -134,7 +134,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Aç</string>
+    <string>Reçete Aç</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblDosya">
@@ -182,7 +182,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Kayıt</string>
+    <string>Reçete Kayıt</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditSon">
@@ -236,7 +236,7 @@
     </font>
    </property>
    <property name="text">
-    <string>sil</string>
+    <string>desen sil</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnEkle">
@@ -260,7 +260,7 @@
     </font>
    </property>
    <property name="text">
-    <string>ekle</string>
+    <string>desen ekle</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditBas">

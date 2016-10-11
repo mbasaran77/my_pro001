@@ -29,14 +29,14 @@ class LineWidget(QWidget):
         #painter.setPen(QPen(self.color, 6, Qt.SolidLine))
         #painter.setBrush(QBrush(Qt.green, Qt.SolidPattern))
         self.i+=1
-        print(self.i)
+        #print(self.i)
         for a in self.demet:
             c, self.x0,self.y0,self.x1,self.y1=a
             a0,a1,a2,a3=c
             color=QColor.fromHsv(a0,a1,a2,a3)
             painter.setPen(QPen(color, 5, Qt.SolidLine))
             painter.drawLine(self.x0,self.y0,self.x1,self.y1) #20, 40, 250, 40
-            print(self.x0,self.x1)
+            #print(self.x0,self.x1)
 class Dialog(QDialog):
     global _demet, sozluk,color,coord
     color ={'renk 1':Qt.darkRed,'renk 2':Qt.black,'renk 3':Qt.blue,'renk 4':Qt.yellow,'renk 5':Qt.cyan,'renk 6':Qt.green,

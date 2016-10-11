@@ -3,17 +3,17 @@ from pyModbusTCP.client import ModbusClient
 from pyModbusTCP import utils
 import time
 
-SERVER_HOST = "192.168.250.2"
-SERVER_PORT = 502
+client_host = "192.168.250.2"
+client_port = 502
 
 c = ModbusClient()
 
-c.host(SERVER_HOST)
-c.port(SERVER_PORT)
+c.host(client_host)
+c.port(client_port)
 
 if not c.is_open():
     if not c.open():
-        print("unable to connect to " + SERVER_HOST + ":" + str(SERVER_PORT))
+        print("unable to connect to " + client_host + ":" + str(client_port))
 
 
 def int32_to_int8(n):
@@ -22,7 +22,7 @@ def int32_to_int8(n):
 
 
 var_int = utils.encode_ieee(7.5)
-
+print(var_int)
 sonuc=int32_to_int8(var_int)
 print(sonuc)
 if c.is_open():

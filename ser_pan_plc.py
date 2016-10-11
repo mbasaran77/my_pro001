@@ -97,12 +97,12 @@ a=bcc_calc(oku_str_1)
 print(a)
 print(bcc_calc(oku_str_2))
 
-ser_init(a)
+# ser_init(a)
 
 
 
 
-#hazirla(mydict)
+hazirla(mydict)
 # my_decoded_str = str.decode(bytes)
 # type(my_decoded_str) # insures its string
 

@@ -191,14 +191,15 @@ class plc_data_w_hazirla(object):
         #return (d_str + (hex(e)[2:]).upper() + chr(13)).encode()
         return ((hex(e)[2:]).upper())
 
+if __name__ == '__main__':
 
 
-my_plc_recete=plc_recete()
-my_plc_recete.hazirla(mydict)
-my_plc_recete.yaz()
+    my_plc_recete=plc_recete()
+    my_plc_recete.hazirla(mydict)
+    my_plc_recete.yaz()
 
-data_w=plc_data_w_hazirla(my_plc_recete.get_arr(),"D00001")
-print(data_w.hazirla())
+    data_w=plc_data_w_hazirla(my_plc_recete.get_arr(),"D00001")
+    print(data_w.hazirla())
 
 
 
